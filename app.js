@@ -245,6 +245,37 @@ function renderHistoryHtml() {
 
   let html = '<div class="history-section"><div class="history-title">📅 Histórico</div>';
 
+  // Sparkline chart
+  if (hist.length >= 2) {
+    const chartW = 280, chartH = 60, pad = 4;
+    const pts = hist.map((s, i) => {
+      const x = pad + (i / (hist.length - 1)) * (chartW - pad * 2);
+      const y = chartH - pad - (s.pct / 100) * (chartH - pad * 2);
+      return { x, y, pct: s.pct };
+    });
+    const line = pts.map((p, i) => (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+    const area = line + ' L' + pts[pts.length-1].x.toFixed(1) + ',' + (chartH - pad) + ' L' + pts[0].x.toFixed(1) + ',' + (chartH - pad) + ' Z';
+    const lastColor = pts[pts.length-1].pct >= 80 ? '#34d399' : pts[pts.length-1].pct >= 50 ? '#fbbf24' : '#f87171';
+
+    html += '<div class="history-chart">';
+    html += '<svg viewBox="0 0 ' + chartW + ' ' + chartH + '" preserveAspectRatio="none">';
+    html += '<defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">';
+    html += '<stop offset="0%" stop-color="' + lastColor + '" stop-opacity="0.3"/>';
+    html += '<stop offset="100%" stop-color="' + lastColor + '" stop-opacity="0"/>';
+    html += '</linearGradient></defs>';
+    html += '<path d="' + area + '" fill="url(#sparkGrad)"/>';
+    html += '<path d="' + line + '" fill="none" stroke="' + lastColor + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+    pts.forEach(p => {
+      html += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3.5" fill="' + lastColor + '" stroke="var(--surface)" stroke-width="2"/>';
+    });
+    html += '</svg>';
+    html += '<div class="history-chart-labels">';
+    hist.forEach(s => {
+      html += '<span>' + s.pct + '%</span>';
+    });
+    html += '</div></div>';
+  }
+
   // Reverse to show most recent first
   [...hist].reverse().forEach((snap, i) => {
     const label = i === 0 ? 'Semana passada' : formatWeekLabel(snap.weekStart);
@@ -296,6 +327,40 @@ function renderHistoryHtml() {
 
   html += '</div>';
   return html;
+}
+
+// ── EXPORT / IMPORT ─────────────────────────────────
+function exportData(){
+  const data={};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    data[k]=localStorage.getItem(k);
+  }
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:`application/json`});
+  const a=document.createElement(`a`);
+  a.href=URL.createObjectURL(blob);
+  a.download=`treino-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function importData(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const data=JSON.parse(e.target.result);
+      if(typeof data!==`object`||data===null){alert(`Arquivo inválido.`);return}
+      if(!confirm(`Isso substituirá todos os dados atuais. Continuar?`))return;
+      localStorage.clear();
+      Object.entries(data).forEach(([k,v])=>localStorage.setItem(k,v));
+      alert(`Dados importados com sucesso!`);
+      location.reload();
+    }catch{alert(`Erro ao ler o arquivo.`)}
+  };
+  reader.readAsText(file);
+  input.value=``;
 }
 
 // ── BIOMETRIC LOCK ──────────────────────────────────

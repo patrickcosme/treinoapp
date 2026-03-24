@@ -12,6 +12,7 @@
   <link rel="apple-touch-icon" href="favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -291,6 +292,24 @@
           <label class="toggle"><input id="cfg-light" onchange="saveConfig()" type="checkbox"> <span class="toggle-slider"></span></label>
         </div>
       </div>
+      <div class="config-section">
+        <div class="config-section-title">Dados</div>
+        <div class="config-row">
+          <div class="config-row-info">
+            <div class="config-row-label">Exportar dados</div>
+            <div class="config-row-sub">Salvar backup em arquivo JSON</div>
+          </div>
+          <button class="config-action-btn" onclick="exportData()">Exportar</button>
+        </div>
+        <div class="config-row">
+          <div class="config-row-info">
+            <div class="config-row-label">Importar dados</div>
+            <div class="config-row-sub">Restaurar backup de arquivo JSON</div>
+          </div>
+          <button class="config-action-btn" onclick="document.getElementById('import-file').click()">Importar</button>
+          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(this)">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -411,5 +430,6 @@
   </div>
 
   <script src="app.js"></script>
+  <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js');</script>
 </body>
 </html>
