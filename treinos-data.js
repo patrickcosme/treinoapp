@@ -56,11 +56,11 @@ const TREINOS_DATA = [
         "gif": "https://static.exercisedb.dev/media/RVwzP10.gif"
       },
       {
-        "nome": "Remada Curvada",
+        "nome": "Remada Baixa",
         "series": 4,
         "reps": "8–10",
         "descanso": "90s",
-        "gif": "https://static.exercisedb.dev/media/eZyBC3j.gif"
+        "gif": "https://static.exercisedb.dev/media/hvV79Si.gif"
       },
       {
         "nome": "Remada Unilateral",
@@ -77,11 +77,11 @@ const TREINOS_DATA = [
         "gif": "https://static.exercisedb.dev/media/4c9BhzB.gif"
       },
       {
-        "nome": "Pullover",
+        "nome": "Pulldown",
         "series": 3,
         "reps": "12–15",
         "descanso": "60s",
-        "gif": "https://static.exercisedb.dev/media/9XjtHvS.gif"
+        "gif": "https://static.exercisedb.dev/media/dU605di.gif"
       }
     ]
   },
