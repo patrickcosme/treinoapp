@@ -305,17 +305,21 @@ function base64ToBuf(b64){const bin=atob(b64);return Uint8Array.from(bin,c=>c.ch
 async function registerBiometric(){
   try{
     const challenge=new Uint8Array(32);crypto.getRandomValues(challenge);
-    const cred=await navigator.credentials.create({publicKey:{
+    const userId=new Uint8Array(16);crypto.getRandomValues(userId);
+    const rpId=location.hostname||undefined;
+    const opts={publicKey:{
       challenge,
-      rp:{name:`Meu Treino`,id:location.hostname||`localhost`},
-      user:{id:new Uint8Array(16),name:`treino-user`,displayName:`Treino User`},
+      rp:rpId?{name:`Meu Treino`,id:rpId}:{name:`Meu Treino`},
+      user:{id:userId,name:`treino-user`,displayName:`Treino User`},
       pubKeyCredParams:[{alg:-7,type:`public-key`},{alg:-257,type:`public-key`}],
-      authenticatorSelection:{authenticatorAttachment:`platform`,userVerification:`required`},
-      timeout:60000
-    }});
+      authenticatorSelection:{authenticatorAttachment:`platform`,userVerification:`required`,residentKey:`preferred`},
+      timeout:120000
+    }};
+    const cred=await navigator.credentials.create(opts);
+    if(!cred)return!1;
     localStorage.setItem(`biometric_cred`,bufToBase64(cred.rawId));
     return!0
-  }catch(e){return!1}
+  }catch(e){console.warn(`Biometric register failed:`,e);return!1}
 }
 
 async function unlockWithBiometrics(){
@@ -324,14 +328,18 @@ async function unlockWithBiometrics(){
   if(!credId){errEl.textContent=`Biometria não configurada`;return}
   try{
     const challenge=new Uint8Array(32);crypto.getRandomValues(challenge);
-    await navigator.credentials.get({publicKey:{
+    const rpId=location.hostname||undefined;
+    const opts={publicKey:{
       challenge,
       allowCredentials:[{id:base64ToBuf(credId),type:`public-key`,transports:[`internal`]}],
       userVerification:`required`,
-      timeout:60000
-    }});
+      timeout:120000
+    }};
+    if(rpId)opts.publicKey.rpId=rpId;
+    await navigator.credentials.get(opts);
     document.getElementById(`lock-screen`).classList.remove(`active`);
   }catch(e){
+    console.warn(`Biometric auth failed:`,e);
     errEl.textContent=`Falha na autenticação. Tente novamente.`
   }
 }
@@ -358,7 +366,8 @@ function checkBiometricLock(){
   const cfg=loadConfig();
   const credId=localStorage.getItem(`biometric_cred`);
   if(cfg.biometric&&credId){
-    document.getElementById(`lock-screen`).classList.add(`active`)
+    document.getElementById(`lock-screen`).classList.add(`active`);
+    setTimeout(()=>unlockWithBiometrics(),300)
   }
 }
 
