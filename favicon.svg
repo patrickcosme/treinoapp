@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0a0a0f"/>
+  <g fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Barra central -->
+    <line x1="148" y1="256" x2="364" y2="256"/>
+    <!-- Anilhas esquerdas -->
+    <rect x="108" y="196" width="40" height="120" rx="10"/>
+    <rect x="76" y="216" width="32" height="80" rx="8"/>
+    <!-- Anilhas direitas -->
+    <rect x="364" y="196" width="40" height="120" rx="10"/>
+    <rect x="404" y="216" width="32" height="80" rx="8"/>
+    <!-- Pontas -->
+    <line x1="60" y1="256" x2="76" y2="256"/>
+    <line x1="436" y1="256" x2="452" y2="256"/>
+  </g>
+</svg>

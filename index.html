@@ -8,7 +8,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Meu Treino</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -261,6 +262,19 @@
         </div>
       </div>
       <div class="config-section">
+        <div class="config-section-title">Segurança</div>
+        <div class="config-row" id="config-row-biometric">
+          <div class="config-row-info">
+            <div class="config-row-label">Bloqueio biométrico</div>
+            <div class="config-row-sub">Exigir biometria ao abrir o app</div>
+          </div>
+          <label class="toggle">
+            <input id="cfg-biometric" onchange="toggleBiometric()" type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="config-section">
         <div class="config-section-title">Aparência</div>
         <div class="config-row">
           <div class="config-row-info">
@@ -372,6 +386,20 @@
       <div style="font-size:52px;margin-bottom:8px;">🏆</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#c8f731;letter-spacing:2px;">TREINO COMPLETO!</div>
       <div style="color:var(--muted);font-size:13px;margin-top:8px;">100% das séries concluídas</div>
+    </div>
+  </div>
+
+  <!-- LOCK SCREEN -->
+  <div id="lock-screen">
+    <div class="lock-content">
+      <div class="lock-icon">🔒</div>
+      <h2 class="lock-title">MEU <span>TREINO</span></h2>
+      <p class="lock-sub">Desbloqueie para acessar</p>
+      <button class="lock-btn" onclick="unlockWithBiometrics()">
+        <svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 0 1 4 4v3h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1V5a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v3h4V5a2 2 0 0 0-2-2zm0 10a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+        Desbloquear
+      </button>
+      <p class="lock-error" id="lock-error"></p>
     </div>
   </div>
 

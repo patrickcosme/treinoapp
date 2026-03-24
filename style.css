@@ -1582,3 +1582,79 @@
   }
   .ex-gif-btn:hover svg { stroke: var(--accent-current); }
 
+  /* LOCK SCREEN */
+  #lock-screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #lock-screen.active { display: flex; }
+
+  .lock-content {
+    text-align: center;
+    animation: fadeUp 0.5s both;
+  }
+
+  .lock-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  .lock-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .lock-title span { color: var(--accent); }
+
+  .lock-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 32px;
+  }
+
+  .lock-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 14px;
+    border: 1px solid var(--accent);
+    background: rgba(200,247,49,0.08);
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .lock-btn:hover { background: rgba(200,247,49,0.15); }
+  .lock-btn:active { transform: scale(0.97); }
+
+  .lock-btn svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .lock-error {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 16px;
+    min-height: 20px;
+  }
+
