@@ -6,6 +6,8 @@ const ASSETS = [
   './app.js',
   './favicon.svg',
   './manifest.json',
+  './treinos.json',
+  './treinos-data.js',
   'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap'
 ];
 

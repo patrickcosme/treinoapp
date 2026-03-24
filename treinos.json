@@ -1,0 +1,222 @@
+[
+  {
+    "dia": "Segunda",
+    "nome": "Peito",
+    "color": "#c8f731",
+    "tempo": 45,
+    "cardio": {
+      "duracao": "20 min",
+      "intensidade": "Zona 2 — ritmo confortável, ~60–65% FC máx. Após o treino de musculação."
+    },
+    "tip": "<strong>Dica:</strong> Nos exercícios compostos (supino), foque na conexão mente-músculo. No crossover, controle a fase excêntrica para maximizar o alongamento.",
+    "exercicios": [
+      {
+        "nome": "Supino Reto (barra)",
+        "series": 4,
+        "reps": "8–10",
+        "descanso": "90s",
+        "gif": "https://static.exercisedb.dev/media/EIeI8Vf.gif"
+      },
+      {
+        "nome": "Supino Inclinado Halteres",
+        "series": 3,
+        "reps": "10–12",
+        "descanso": "75s",
+        "gif": "https://static.exercisedb.dev/media/ns0SIbU.gif"
+      },
+      {
+        "nome": "Crucifixo / Peck Deck",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/v3xmPAR.gif"
+      },
+      {
+        "nome": "Crossover",
+        "series": 3,
+        "reps": "15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/UKWTJWR.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Terça",
+    "nome": "Costas",
+    "color": "#38bdf8",
+    "tempo": 50,
+    "cardio": null,
+    "tip": "<strong>Dica:</strong> Inicie puxando as escápulas antes de dobrar os cotovelos. Na remada curvada, mantenha o core contraído e o tronco estável.",
+    "exercicios": [
+      {
+        "nome": "Pulley Frente",
+        "series": 4,
+        "reps": "8–10",
+        "descanso": "90s",
+        "gif": "https://static.exercisedb.dev/media/RVwzP10.gif"
+      },
+      {
+        "nome": "Remada Curvada",
+        "series": 4,
+        "reps": "8–10",
+        "descanso": "90s",
+        "gif": "https://static.exercisedb.dev/media/eZyBC3j.gif"
+      },
+      {
+        "nome": "Remada Unilateral",
+        "series": 3,
+        "reps": "10–12",
+        "descanso": "75s",
+        "gif": "https://static.exercisedb.dev/media/C0MA9bC.gif"
+      },
+      {
+        "nome": "Pullei con Triângulo",
+        "series": 3,
+        "reps": "10–12",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/4c9BhzB.gif"
+      },
+      {
+        "nome": "Pullover",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/9XjtHvS.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Quarta",
+    "nome": "Perna",
+    "color": "#f97316",
+    "tempo": 50,
+    "cardio": null,
+    "tip": "<strong>Dica:</strong> No leg press, não trave os joelhos no topo. Cadeira extensora: suba rápido, desça devagar (2s). Descanse bem — perna drena bastante no déficit.",
+    "exercicios": [
+      {
+        "nome": "Leg Press 45°",
+        "series": 4,
+        "reps": "10–12",
+        "descanso": "90s",
+        "gif": "https://static.exercisedb.dev/media/10Z2DXU.gif"
+      },
+      {
+        "nome": "Cadeira Extensora",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/my33uHU.gif"
+      },
+      {
+        "nome": "Cadeira Flexora",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/Zg3XY7P.gif"
+      },
+      {
+        "nome": "Panturrilha em Pé",
+        "series": 4,
+        "reps": "15–20",
+        "descanso": "45s",
+        "gif": "https://static.exercisedb.dev/media/ykUOVze.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Quinta",
+    "nome": "Ombro",
+    "color": "#e879f9",
+    "tempo": 48,
+    "cardio": {
+      "duracao": "25 min",
+      "intensidade": "Zona 2 — ritmo confortável, ~60–65% FC máx. Após o treino de musculação."
+    },
+    "tip": "<strong>Dica:</strong> Elevação lateral: cotovelo levemente dobrado, pince o dedo mindinho pra cima no topo. Volume alto no lateral é o que mais constrói o ombro.",
+    "exercicios": [
+      {
+        "nome": "Desenvolvimento Halteres",
+        "series": 4,
+        "reps": "8–10",
+        "descanso": "90s",
+        "gif": "https://static.exercisedb.dev/media/znQUdHY.gif"
+      },
+      {
+        "nome": "Elevação Lateral",
+        "series": 4,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/DsgkuIt.gif"
+      },
+      {
+        "nome": "Elevação Frontal",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/3eGE2JC.gif"
+      },
+      {
+        "nome": "Encolhimento (Trapézio)",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/dG7tG5y.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Sexta",
+    "nome": "Bíceps + Tríceps",
+    "color": "#34d399",
+    "tempo": 55,
+    "cardio": {
+      "duracao": "30 min",
+      "intensidade": "Zona 2 — ritmo confortável, ~60–65% FC máx. Após o treino de musculação."
+    },
+    "tip": "<strong>Dica:</strong> No tríceps francês, cotovelos apontados pro teto e movimento lento na descida. Superset bíceps + tríceps é opcional se quiser economizar tempo.",
+    "exercicios": [
+      {
+        "nome": "Rosca Direta Barra",
+        "series": 4,
+        "reps": "8–10",
+        "descanso": "75s",
+        "gif": "https://static.exercisedb.dev/media/25GPyDY.gif"
+      },
+      {
+        "nome": "Rosca Martelo",
+        "series": 3,
+        "reps": "10–12",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/slDvUAU.gif"
+      },
+      {
+        "nome": "Tríceps Francês Halteres",
+        "series": 4,
+        "reps": "8–10",
+        "descanso": "75s",
+        "gif": "https://static.exercisedb.dev/media/PdmaD0N.gif"
+      },
+      {
+        "nome": "Pulley Corda",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/dU605di.gif"
+      },
+      {
+        "nome": "Rosca Concentrada",
+        "series": 2,
+        "reps": "12–15",
+        "descanso": "45s",
+        "gif": "https://static.exercisedb.dev/media/gvsWLQw.gif"
+      },
+      {
+        "nome": "Tríceps Polia Barra Reta",
+        "series": 2,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/3ZflifB.gif"
+      }
+    ]
+  }
+]

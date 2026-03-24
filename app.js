@@ -1,4 +1,5 @@
-const treinos=[{dia:`Segunda`,nome:`Peito`,color:`#c8f731`,tempo:45,cardio:{duracao:`20 min`,intensidade:`Zona 2 — ritmo confortável, ~60–65% FC máx. Após o treino de musculação.`},tip:`<strong>Dica:</strong> Nos exercícios compostos (supino), foque na conexão mente-músculo. No crossover, controle a fase excêntrica para maximizar o alongamento.`,exercicios:[{nome:`Supino Reto (barra)`,series:4,reps:`8–10`,descanso:`90s`,gif:`https://static.exercisedb.dev/media/EIeI8Vf.gif`},{nome:`Supino Inclinado Halteres`,series:3,reps:`10–12`,descanso:`75s`,gif:`https://static.exercisedb.dev/media/ns0SIbU.gif`},{nome:`Crucifixo / Peck Deck`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/v3xmPAR.gif`},{nome:`Crossover`,series:3,reps:`15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/UKWTJWR.gif`}]},{dia:`Terça`,nome:`Costas`,color:`#38bdf8`,tempo:50,cardio:null,tip:`<strong>Dica:</strong> Inicie puxando as escápulas antes de dobrar os cotovelos. Na remada curvada, mantenha o core contraído e o tronco estável.`,exercicios:[{nome:`Pulley Frente`,series:4,reps:`8–10`,descanso:`90s`,gif:`https://static.exercisedb.dev/media/RVwzP10.gif`},{nome:`Remada Curvada`,series:4,reps:`8–10`,descanso:`90s`,gif:`https://static.exercisedb.dev/media/eZyBC3j.gif`},{nome:`Remada Unilateral`,series:3,reps:`10–12`,descanso:`75s`,gif:`https://static.exercisedb.dev/media/C0MA9bC.gif`},{nome:`Pullei con Triângulo`,series:3,reps:`10–12`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/4c9BhzB.gif`},{nome:`Pullover`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/9XjtHvS.gif`}]},{dia:`Quarta`,nome:`Perna`,color:`#f97316`,tempo:50,cardio:null,tip:`<strong>Dica:</strong> No leg press, não trave os joelhos no topo. Cadeira extensora: suba rápido, desça devagar (2s). Descanse bem — perna drena bastante no déficit.`,exercicios:[{nome:`Leg Press 45°`,series:4,reps:`10–12`,descanso:`90s`,gif:`https://static.exercisedb.dev/media/10Z2DXU.gif`},{nome:`Cadeira Extensora`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/my33uHU.gif`},{nome:`Cadeira Flexora`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/Zg3XY7P.gif`},{nome:`Panturrilha em Pé`,series:4,reps:`15–20`,descanso:`45s`,gif:`https://static.exercisedb.dev/media/ykUOVze.gif`}]},{dia:`Quinta`,nome:`Ombro`,color:`#e879f9`,tempo:48,cardio:{duracao:`25 min`,intensidade:`Zona 2 — ritmo confortável, ~60–65% FC máx. Após o treino de musculação.`},tip:`<strong>Dica:</strong> Elevação lateral: cotovelo levemente dobrado, pince o dedo mindinho pra cima no topo. Volume alto no lateral é o que mais constrói o ombro.`,exercicios:[{nome:`Desenvolvimento Halteres`,series:4,reps:`8–10`,descanso:`90s`,gif:`https://static.exercisedb.dev/media/znQUdHY.gif`},{nome:`Elevação Lateral`,series:4,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/DsgkuIt.gif`},{nome:`Elevação Frontal`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/3eGE2JC.gif`},{nome:`Encolhimento (Trapézio)`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/dG7tG5y.gif`}]},{dia:`Sexta`,nome:`Bíceps + Tríceps`,color:`#34d399`,tempo:55,cardio:{duracao:`30 min`,intensidade:`Zona 2 — ritmo confortável, ~60–65% FC máx. Após o treino de musculação.`},tip:`<strong>Dica:</strong> No tríceps francês, cotovelos apontados pro teto e movimento lento na descida. Superset bíceps + tríceps é opcional se quiser economizar tempo.`,exercicios:[{nome:`Rosca Direta Barra`,series:4,reps:`8–10`,descanso:`75s`,gif:`https://static.exercisedb.dev/media/25GPyDY.gif`},{nome:`Rosca Martelo`,series:3,reps:`10–12`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/slDvUAU.gif`},{nome:`Tríceps Francês Halteres`,series:4,reps:`8–10`,descanso:`75s`,gif:`https://static.exercisedb.dev/media/PdmaD0N.gif`},{nome:`Pulley Corda`,series:3,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/dU605di.gif`},{nome:`Rosca Concentrada`,series:2,reps:`12–15`,descanso:`45s`,gif:`https://static.exercisedb.dev/media/gvsWLQw.gif`},{nome:`Tríceps Polia Barra Reta`,series:2,reps:`12–15`,descanso:`60s`,gif:`https://static.exercisedb.dev/media/3ZflifB.gif`}]}];function showSummary(){
+let treinos=[];
+function showSummary(){
   let body=document.getElementById('modal-body'),
       totalSeries=0,doneSeries=0,daysComplete=0,daysPartial=0,daysPending=0,html='';
 
@@ -436,7 +437,57 @@ function checkBiometricLock(){
   }
 }
 
-document.addEventListener(`DOMContentLoaded`,function(){checkBiometricLock();applyConfig(loadConfig());checkAutoReset();updateCardGauges()});
+function initApp(){
+  if(typeof TREINOS_DATA!==`undefined`&&TREINOS_DATA.length>0){
+    treinos=TREINOS_DATA;
+  }
+  renderHomeCards();
+  if(window.initCardSwap)initCardSwap();
+  checkBiometricLock();
+  applyConfig(loadConfig());
+  checkAutoReset();
+  updateCardGauges();
+}
+
+function renderHomeCards(){
+  const grid=document.getElementById(`cards-grid`);
+  if(!grid||treinos.length===0)return;
+  grid.innerHTML=treinos.map((t,i)=>{
+    const totalSeries=t.exercicios.reduce((a,e)=>a+e.series,0);
+    const tags=t.exercicios.map(e=>`<span class="tag">${e.nome.split(` `)[0]}</span>`).join(``);
+    const cardioHtml=t.cardio?`<div class="cardio-badge"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> + Esteira ${t.cardio.duracao}</div>`:``;
+    const timeLabel=t.cardio?`~${t.tempo} min + esteira`:`~${t.tempo} min`;
+    return `<div class="card" data-treino="${i}" onclick="showDetail(${i})" style="--card-color:${t.color}">
+      <div class="card-day">${t.dia}</div>
+      <div class="card-title">${t.nome}</div>
+      <div class="card-exercises">${tags}</div>
+      <div class="card-bottom">
+        <div class="card-bottom-left">
+          ${cardioHtml}
+          <div class="card-badge-info badge-series">
+            <svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:#818cf8;fill:none;stroke-width:2;stroke-linecap:round"><line x1="6" y1="12" x2="18" y2="12"/><rect x="2" y="10" width="4" height="4" rx="1"/><rect x="18" y="10" width="4" height="4" rx="1"/></svg>
+            <strong>${totalSeries}</strong> séries
+          </div>
+          <div class="card-badge-info badge-time">
+            <svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:#34d399;fill:none;stroke-width:2;stroke-linecap:round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ${timeLabel}
+          </div>
+        </div>
+        <div class="card-gauge" id="card-gauge-${i}">
+          <svg viewBox="0 0 48 48" height="48" width="48">
+            <circle cx="24" cy="24" fill="none" r="19" stroke="rgba(255,255,255,0.07)" stroke-width="3.5"/>
+            <circle style="transition:stroke-dashoffset .5s,stroke .4s" transform="rotate(-90 24 24)" cx="24" cy="24" fill="none" id="card-gauge-ring-${i}" r="19" stroke="#6b6b80" stroke-dasharray="119" stroke-dashoffset="119" stroke-linecap="round" stroke-width="3.5"/>
+          </svg>
+          <div class="card-gauge-label">
+            <span style="color:#6b6b80;font-family:Bebas Neue,sans-serif;font-size:11px;transition:color .4s" id="card-gauge-pct-${i}">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join(``);
+}
+
+document.addEventListener(`DOMContentLoaded`,initApp);
 
 
 // ── RUN SHEET ────────────────────────────────────────
@@ -676,5 +727,5 @@ function updateCardioPill(idx) {
     });
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  window.initCardSwap = init;
 })();
