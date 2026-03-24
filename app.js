@@ -72,9 +72,7 @@ function showSummary(){
   }
 
   let pct=totalSeries>0?Math.round(doneSeries/totalSeries*100):0;
-  const streak=getStreak();
-  const streakHtml=streak>0?'<div class="summary-streak">🔥 '+streak+' semana'+(streak>1?'s':'')+' seguida'+(streak>1?'s':'')+'</div>':'';
-  body.innerHTML=streakHtml+'<div class="summary-totals">'
+  body.innerHTML='<div class="summary-totals">'
     +'<div class="summary-total-item"><span class="num-green">'+daysComplete+'</span><p>Completos</p></div>'
     +'<div class="summary-total-item"><span class="num-yellow">'+daysPartial+'</span><p>Parciais</p></div>'
     +'<div class="summary-total-item"><span class="num-gray">'+daysPending+'</span><p>Pendentes</p></div>'
@@ -151,7 +149,6 @@ let warn=cfg.warning===void 0?5:cfg.warning;!warnFired&&warn>0&&remaining===warn
 // Color by progress
 let color=pct===0?`#6b6b80`:gaugeColor(pct);ring.style.stroke=color,doneEl.style.color=color;if(pct===100)triggerConfetti()}function toggleSerie(row,exIndex){row.classList.toggle(`checked`);let isChecked=row.classList.contains(`checked`);
 // Start rest timer only when marking as done and timer is enabled
-if(isChecked)_lastCheckedRow=row;
 if(row.dataset.key&&(isChecked?localStorage.setItem(row.dataset.key,`1`):localStorage.removeItem(row.dataset.key)),isChecked&&row.dataset.rest&&loadConfig().timer!==!1){let secs=parseInt(row.dataset.rest);secs>0&&startRestTimer(secs)}
 // update progress ring
 let item=row.closest(`.ex-item`),total=item.querySelectorAll(`.serie-row`).length,done=item.querySelectorAll(`.serie-row.checked`).length,ring=item.querySelector(`.ring-fill`),label=item.querySelector(`.ex-progress-label`),circumference=88;ring.style.strokeDashoffset=88-done/total*88,label.textContent=done+`/`+total,done===total?item.classList.add(`done`):item.classList.remove(`done`),updateGauge(),updateCardGauges()}function goBack(){_confettiFired={};document.getElementById(`detail`).style.display=`none`,document.getElementById(`home`).style.display=`flex`,updateCardGauges(),window.scrollTo(0,0)}
@@ -168,27 +165,6 @@ function getWeekStart(date) {
   const diff = (day === 0 ? -6 : 1 - day); // adjust to Monday
   d.setDate(d.getDate() + diff);
   return d.toISOString().slice(0, 10);
-}
-
-function getStreak() {
-  const hist = loadHistory();
-  if (hist.length === 0) return 0;
-  let streak = 0;
-  for (let i = hist.length - 1; i >= 0; i--) {
-    if (hist[i].pct > 0) streak++;
-    else break;
-  }
-  // Check current week too
-  let currentDone = 0;
-  treinos.forEach((t, ti) => {
-    t.exercicios.forEach((ex, ei) => {
-      for (let si = 0; si < ex.series; si++) {
-        if (localStorage.getItem('t' + ti + '_e' + ei + '_s' + si) === '1') currentDone++;
-      }
-    });
-  });
-  if (currentDone > 0) streak++;
-  return streak;
 }
 
 function loadHistory() {
@@ -353,100 +329,6 @@ function renderHistoryHtml() {
   html += '</div>';
   return html;
 }
-
-// ── SHARE SUMMARY ───────────────────────────────────
-function shareSummary(){
-  let text=`💪 Meu Treino — Resumo da Semana\n\n`;
-  let totalS=0,doneS=0;
-  treinos.forEach((t,ti)=>{
-    let dayT=0,dayD=0;
-    t.exercicios.forEach((ex,ei)=>{
-      for(let si=0;si<ex.series;si++){
-        dayT++;totalS++;
-        if(localStorage.getItem(`t${ti}_e${ei}_s${si}`)===`1`){dayD++;doneS++}
-      }
-    });
-    const dpct=dayT>0?Math.round(dayD/dayT*100):0;
-    const icon=dpct===100?`✅`:dpct>0?`🔶`:`⬜`;
-    text+=`${icon} ${t.dia} — ${t.nome}: ${dpct}%\n`;
-    if(t.cardio){
-      const run=JSON.parse(localStorage.getItem(`run_${ti}`)||`null`);
-      if(run)text+=`   🏃 ${run.km}km · ${run.min}min · ${run.pace}/km\n`;
-    }
-  });
-  const pct=totalS>0?Math.round(doneS/totalS*100):0;
-  const streak=getStreak();
-  text+=`\n📊 Progresso: ${pct}%`;
-  if(streak>0)text+=`\n🔥 ${streak} semana${streak>1?`s`:``} seguida${streak>1?`s`:``}`;
-
-  if(navigator.share){
-    navigator.share({title:`Meu Treino`,text}).catch(()=>{});
-  }else{
-    navigator.clipboard.writeText(text).then(()=>alert(`Resumo copiado!`)).catch(()=>{});
-  }
-}
-
-// ── SHAKE TO UNDO ───────────────────────────────────
-let _lastCheckedRow=null;
-const _origToggleSerie=toggleSerie;
-
-// Wrap toggleSerie to track last checked row
-(function(){
-  const orig=window.toggleSerie||function(){};
-})();
-
-function setupShakeUndo(){
-  let lastX=0,lastY=0,lastZ=0,lastTime=0;
-  window.addEventListener(`devicemotion`,function(e){
-    const acc=e.accelerationIncludingGravity;
-    if(!acc)return;
-    const now=Date.now();
-    if(now-lastTime<300)return;
-    const dx=Math.abs(acc.x-lastX),dy=Math.abs(acc.y-lastY),dz=Math.abs(acc.z-lastZ);
-    const force=dx+dy+dz;
-    lastX=acc.x;lastY=acc.y;lastZ=acc.z;lastTime=now;
-    if(force>30&&_lastCheckedRow){
-      undoLastSerie();
-    }
-  });
-}
-
-function undoLastSerie(){
-  const row=_lastCheckedRow;
-  if(!row||!row.classList.contains(`checked`))return;
-  row.classList.remove(`checked`);
-  if(row.dataset.key)localStorage.removeItem(row.dataset.key);
-  // update progress ring
-  const item=row.closest(`.ex-item`);
-  if(item){
-    const total=item.querySelectorAll(`.serie-row`).length;
-    const done=item.querySelectorAll(`.serie-row.checked`).length;
-    const ring=item.querySelector(`.ring-fill`);
-    const label=item.querySelector(`.ex-progress-label`);
-    if(ring)ring.style.strokeDashoffset=88-done/total*88;
-    if(label)label.textContent=done+`/`+total;
-    done===total?item.classList.add(`done`):item.classList.remove(`done`);
-  }
-  updateGauge();updateCardGauges();
-  if(navigator.vibrate)navigator.vibrate([50,30,50]);
-  _lastCheckedRow=null;
-  showUndoToast();
-}
-
-function showUndoToast(){
-  let t=document.getElementById(`undo-toast`);
-  if(!t){
-    t=document.createElement(`div`);
-    t.id=`undo-toast`;
-    t.className=`undo-toast`;
-    document.body.appendChild(t);
-  }
-  t.textContent=`↩ Série desmarcada`;
-  t.classList.add(`show`);
-  setTimeout(()=>t.classList.remove(`show`),2000);
-}
-
-if(typeof DeviceMotionEvent!==`undefined`)setupShakeUndo();
 
 // ── EXPORT / IMPORT ─────────────────────────────────
 function exportData(){
