@@ -1,0 +1,264 @@
+[
+  {
+    "dia": "Segunda",
+    "nome": "Perna (A)",
+    "color": "#f97316",
+    "tempo": 50,
+    "cardio": {
+      "duracao": "20–30 min",
+      "intensidade": "Esteira ou bike — Zona 2, ritmo confortável."
+    },
+    "tip": "<strong>Dica:</strong> No banco extensor, faça o pico de 2 segundos no topo da contração. No isométrico, mantenha a posição por 20 segundos sem travar os joelhos.",
+    "exercicios": [
+      {
+        "nome": "Banco Extensor com pico 2\"",
+        "series": 4,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/my33uHU.gif"
+      },
+      {
+        "nome": "Banco Extensor Isométrico",
+        "series": 4,
+        "reps": "20\"",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/my33uHU.gif"
+      },
+      {
+        "nome": "Leg Press 45°",
+        "series": 4,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/10Z2DXU.gif"
+      },
+      {
+        "nome": "Hack Sentado Leve",
+        "series": 4,
+        "reps": "15–20",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/Qa55kX1.gif"
+      },
+      {
+        "nome": "Flexor em Pé",
+        "series": 4,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/C5jncD2.gif"
+      },
+      {
+        "nome": "Cadeira Flexora",
+        "series": 4,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/Zg3XY7P.gif"
+      },
+      {
+        "nome": "Banco Abdutor + Adutor",
+        "series": 4,
+        "reps": "12+12",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/CHpahtl.gif"
+      },
+      {
+        "nome": "Panturrilha em Pé",
+        "series": 4,
+        "reps": "15–20",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/ykUOVze.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Terça",
+    "nome": "Costas + Bíceps (B)",
+    "color": "#38bdf8",
+    "tempo": 35,
+    "cardio": {
+      "duracao": "20–30 min",
+      "intensidade": "Esteira ou bike — Zona 2, ritmo confortável."
+    },
+    "tip": "<strong>Dica:</strong> Descanso curto de 30s — mantenha o ritmo. Na rosca alternada, faça primeiro todas as diretas e depois todas as martelo.",
+    "exercicios": [
+      {
+        "nome": "Pulley Frente Pronado Aberto",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/eYnzaCm.gif"
+      },
+      {
+        "nome": "Convergente Supinado",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/IGjKj1v.gif"
+      },
+      {
+        "nome": "Remada Baixa",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/hvV79Si.gif"
+      },
+      {
+        "nome": "Voador Inverso",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/myfUsKf.gif"
+      },
+      {
+        "nome": "Rosca Alternada + Martelo",
+        "series": 3,
+        "reps": "12+12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/BU15nH4.gif"
+      },
+      {
+        "nome": "Rosca Scott",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/jivWf8n.gif"
+      },
+      {
+        "nome": "Lombar",
+        "series": 3,
+        "reps": "10",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/rUXfn3R.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Quarta",
+    "nome": "Glúteo + Posterior (C)",
+    "color": "#e879f9",
+    "tempo": 45,
+    "cardio": {
+      "duracao": "20–30 min",
+      "intensidade": "Esteira ou bike — Zona 2, ritmo confortável."
+    },
+    "tip": "<strong>Dica:</strong> Na elevação pélvica e banco frog, aperte o glúteo no topo por 1–2 segundos. No flexor ajoelhado, controle a descida.",
+    "exercicios": [
+      {
+        "nome": "Elevação Pélvica",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/qKBpF7I.gif"
+      },
+      {
+        "nome": "Banco Frog",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/qKBpF7I.gif"
+      },
+      {
+        "nome": "Glúteo Máquina",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/Kpajagk.gif"
+      },
+      {
+        "nome": "Banco Abdutor",
+        "series": 3,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/CHpahtl.gif"
+      },
+      {
+        "nome": "Flexor Ajoelhado",
+        "series": 4,
+        "reps": "12–15",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/nnmCTLN.gif"
+      },
+      {
+        "nome": "Mesa Flexora",
+        "series": 4,
+        "reps": "15–20",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/17lJ1kr.gif"
+      },
+      {
+        "nome": "Cadeira Flexora",
+        "series": 4,
+        "reps": "15–20",
+        "descanso": "60s",
+        "gif": "https://static.exercisedb.dev/media/Zg3XY7P.gif"
+      }
+    ]
+  },
+  {
+    "dia": "Quinta",
+    "nome": "Peito + Tríceps + Ombro (D)",
+    "color": "#34d399",
+    "tempo": 35,
+    "cardio": {
+      "duracao": "20–30 min",
+      "intensidade": "Esteira ou bike — Zona 2, ritmo confortável."
+    },
+    "tip": "<strong>Dica:</strong> Descanso curto de 30s — mantenha a intensidade alta. No tríceps, alterne as pegadas pra trabalhar todas as porções.",
+    "exercicios": [
+      {
+        "nome": "Voador",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/v3xmPAR.gif"
+      },
+      {
+        "nome": "Supino Convergente",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/DOoWcnA.gif"
+      },
+      {
+        "nome": "Supino 45°",
+        "series": 3,
+        "reps": "10",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/3TZduzM.gif"
+      },
+      {
+        "nome": "Tríceps Cross (barra) Pronado",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/3ZflifB.gif"
+      },
+      {
+        "nome": "Tríceps Cross (barra) Supinado",
+        "series": 3,
+        "reps": "12",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/VjYliFZ.gif"
+      },
+      {
+        "nome": "Tríceps na Corda",
+        "series": 3,
+        "reps": "10",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/dU605di.gif"
+      },
+      {
+        "nome": "Elevação Lateral",
+        "series": 3,
+        "reps": "10",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/DsgkuIt.gif"
+      },
+      {
+        "nome": "Elevação Frontal",
+        "series": 3,
+        "reps": "10",
+        "descanso": "30s",
+        "gif": "https://static.exercisedb.dev/media/3eGE2JC.gif"
+      }
+    ]
+  }
+]

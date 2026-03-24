@@ -60,6 +60,19 @@
     </div>
     <div class="config-body">
       <div class="config-section">
+        <div class="config-section-title">Perfil</div>
+        <div class="config-row">
+          <div class="config-row-info">
+            <div class="config-row-label">Treino ativo</div>
+            <div class="config-row-sub">Escolha o plano de treino</div>
+          </div>
+          <select id="cfg-profile" onchange="switchProfile(this.value)" class="config-select">
+            <option value="patrick">Patrick</option>
+            <option value="cleide">Cleide</option>
+          </select>
+        </div>
+      </div>
+      <div class="config-section">
         <div class="config-section-title">Treino</div>
         <div class="config-row">
           <div class="config-row-info">
@@ -136,7 +149,7 @@
           <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(this)">
         </div>
       </div>
-      <div class="config-version">v1.0.0</div>
+      <div class="config-version">v1.0.1</div>
     </div>
   </section>
 
@@ -257,6 +270,7 @@
   </div>
 
   <script src="treinos-data.js"></script>
+  <script src="treino-cleide-data.js"></script>
   <script src="app.js"></script>
   <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js');</script>
 </body>
