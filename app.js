@@ -446,13 +446,33 @@ function loadProfile(){
   return localStorage.getItem(`treino_profile`)||`patrick`;
 }
 
-function switchProfile(name){
+async function switchProfile(name){
+  const select=document.getElementById(`cfg-profile`);
+  const current=loadProfile();
+  // Require biometric if credential exists
+  const credId=localStorage.getItem(`biometric_cred`);
+  if(credId&&name!==current){
+    try{
+      const challenge=new Uint8Array(32);crypto.getRandomValues(challenge);
+      const rpId=location.hostname||undefined;
+      const opts={publicKey:{
+        challenge,
+        allowCredentials:[{id:base64ToBuf(credId),type:`public-key`,transports:[`internal`]}],
+        userVerification:`required`,
+        timeout:120000
+      }};
+      if(rpId)opts.publicKey.rpId=rpId;
+      await navigator.credentials.get(opts);
+    }catch(e){
+      select.value=current;
+      return;
+    }
+  }
   localStorage.setItem(`treino_profile`,name);
   treinos=PROFILES[name]||PROFILES.patrick;
   renderHomeCards();
   if(window.initCardSwap)initCardSwap();
   updateCardGauges();
-  // Update header title
   const h1=document.querySelector(`#home h1`);
   if(h1)h1.innerHTML=name===`patrick`?`MEU <span>TREINO</span>`:`TREINO <span>${name.toUpperCase()}</span>`;
 }
