@@ -39,10 +39,11 @@ function showSummary(){
     else{pillClass='pill-partial';pillText=dayDone+'/'+dayTotal+' séries';daysPartial++;}
 
     html+='<div class="summary-day">'
-      +'<div class="summary-day-header"><div class="summary-day-info">'
+      +'<div class="summary-day-header" onclick="this.parentElement.classList.toggle(\'open\')"><div class="summary-day-info">'
       +'<div class="summary-day-name">'+t.nome+'</div>'
       +'<div class="summary-day-sub">'+t.dia+'</div>'
-      +'</div><span class="summary-pill '+pillClass+'">'+pillText+'</span></div>'
+      +'</div><span class="summary-pill '+pillClass+'">'+pillText+'</span>'
+      +'<svg class="summary-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>'
       +'<div class="summary-exercises">'+exRows+runRow+'</div>'
       +'</div>';
   });
@@ -72,12 +73,14 @@ function showSummary(){
   }
 
   let pct=totalSeries>0?Math.round(doneSeries/totalSeries*100):0;
+  const barColor=pct>=80?'#34d399':pct>=50?'#fbbf24':'#f87171';
+  const progressBar='<div class="summary-progress-bar"><div class="summary-progress-fill" style="width:'+pct+'%;background:'+barColor+'"></div></div>';
   body.innerHTML='<div class="summary-totals">'
     +'<div class="summary-total-item"><span class="num-green">'+daysComplete+'</span><p>Completos</p></div>'
     +'<div class="summary-total-item"><span class="num-yellow">'+daysPartial+'</span><p>Parciais</p></div>'
     +'<div class="summary-total-item"><span class="num-gray">'+daysPending+'</span><p>Pendentes</p></div>'
     +'<div class="summary-total-item"><span class="num-green">'+pct+'%</span><p>Progresso</p></div>'
-    +'</div>'+runSummary+html;
+    +'</div>'+progressBar+runSummary+html;
   document.getElementById('modal-overlay').style.display='block';
   document.getElementById('modal-summary').style.display='block';
   // Append history
